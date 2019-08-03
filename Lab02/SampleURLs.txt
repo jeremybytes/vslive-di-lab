@@ -1,0 +1,13 @@
+OK
+http://localhost:8973/api/SolarCalculator?lat=47.6429&lng=-122.1277&date=2019-08-13
+
+http://localhost:8973/api/SolarCalculator/47.6429/-122.1277/2019-08-13
+
+ERROR
+http://localhost:8973/api/SolarCalculator?lat=47.6429&lng=-622.1277&date=2019-08-13
+
+Microsoft Building 33
+47.6429,-122.1277
+
+
+

@@ -1,0 +1,16 @@
+﻿@model IEnumerable<OrderTaker.Models.Product>
+@{
+    ViewBag.Title = "Product List";
+}
+
+<h2>Product List</h2>
+@using (Html.BeginForm("SearchProducts", "Product"))
+{
+    @Html.TextBox("searchString")
+    <input type="submit" value="Search Products" />
+}
+
+@foreach (var product in Model)
+{
+    Html.RenderPartial("ProductSummary", product);
+}

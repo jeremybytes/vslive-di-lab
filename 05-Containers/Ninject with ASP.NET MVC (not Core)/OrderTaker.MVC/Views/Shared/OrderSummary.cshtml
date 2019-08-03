@@ -1,0 +1,25 @@
+﻿@model OrderTaker.Models.Order
+
+@{
+    ViewBag.Title = "Order Summary";
+}
+
+<h3>Order Summary</h3>
+Order Date: @Model.OrderDate.ToString("d")
+@foreach (var orderItem in Model.OrderItems)
+{
+    <h4>@orderItem.Product.ProductName</h4>
+    <b>Quantity :</b>
+    @orderItem.Quantity.ToString()<br />
+    <b>Total: </b>
+    @orderItem.TotalPrice.ToString("c", new System.Globalization.CultureInfo("en-US"))<br />
+    <hr />
+}
+<h4>Total for Order placed on @Model.OrderDate.ToString("d"): </h4>
+<h3>@Model.OrderTotal.ToString("c", new System.Globalization.CultureInfo("en-US"))</h3>
+
+@using (Html.BeginForm("Details", "Order"))
+{
+    @Html.HiddenFor(x => x.Id)
+    <input type="submit" value="Order Details" />
+}

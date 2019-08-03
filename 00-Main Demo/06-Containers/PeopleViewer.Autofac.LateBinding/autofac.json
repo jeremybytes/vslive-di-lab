@@ -1,0 +1,13 @@
+{
+  "components": [
+    {
+      "type": "PersonReader.Service.ServiceReader, PersonReader.Service",
+      "services": [
+        {
+          "type": "PeopleViewer.Common.IPersonReader, PeopleViewer.Common"
+        }
+      ],
+      "injectionProperties": false
+    }
+  ]
+}

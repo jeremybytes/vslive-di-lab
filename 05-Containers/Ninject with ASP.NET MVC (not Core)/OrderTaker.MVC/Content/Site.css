@@ -1,0 +1,93 @@
+﻿/*DIV.item { border-top: 1px dotted gray; padding-top: .7em; margin-bottom: .7em; }
+DIV.item H3 { font-size: 1.3em; margin: 0 0 .25em 0; }
+DIV.item H4 { font-size: 1.1em; margin:.4em 0 0 0; }*/
+DIV.item:first-child {
+    border-top: none;
+    padding-top: 0;
+}
+
+DIV.item {
+    border-top: 1px dotted gray;
+    padding-top: .7em;
+    margin-bottom: .7em;
+}
+
+    DIV.item INPUT {
+        color: White;
+        background-color: #333;
+        border: 1px solid black;
+        cursor: pointer;
+        margin: 4px;
+    }
+
+DIV.warning {
+    color: red;
+    font-style: italic;
+}
+
+DIV.return {
+    padding-top: 20px;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+DIV#cart {
+    float: right;
+    margin: .8em;
+    color: Silver;
+    background-color: #555;
+    padding: .5em .5em .5em 1em;
+}
+
+    DIV#cart A {
+        text-decoration: none;
+        padding: .4em .4em .4em 1em;
+        line-height: 2.1em;
+        margin-left: .5em;
+        background-color: #333;
+        color: White;
+        border: 1px solid black;
+    }
+
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/* styles for validation helpers */
+.field-validation-error {
+    color: #b94a48;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #b94a48;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: #b94a48;
+}
+
+.validation-summary-valid {
+    display: none;
+}

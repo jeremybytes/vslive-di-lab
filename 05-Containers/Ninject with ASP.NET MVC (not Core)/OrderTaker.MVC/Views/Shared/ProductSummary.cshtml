@@ -1,0 +1,20 @@
+﻿@model OrderTaker.Models.Product
+
+<div class="item">
+    <h3>@Model.ProductName</h3>
+    <h4>@Model.UnitPrice.ToString("c", new System.Globalization.CultureInfo("en-US"))</h4>
+
+    @if (!Model.IsActive)
+    {
+        <div class="warning">
+            This item has been discontinued.
+        </div>
+    }
+
+    @using (Html.BeginForm("Details", "Product"))
+    {
+        @Html.HiddenFor(x => x.Id)
+        <input type="submit" value="Product Details" />
+    }
+
+</div>

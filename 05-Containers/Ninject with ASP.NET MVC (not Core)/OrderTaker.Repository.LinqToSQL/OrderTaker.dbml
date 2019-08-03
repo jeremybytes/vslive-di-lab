@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="OrderTaker" Class="OrderTakerDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=(LocalDB)\v11.0;AttachDbFilename=&quot;C:\Development\Pluralsight\07 Defensive Coding\Working Demo\DefensiveCoding\OrderTaker.MVC\App_Data\OrderTaker.mdf&quot;;Integrated Security=True" SettingsObjectName="OrderTaker.Repository.LinqToSQL.Properties.Settings" SettingsPropertyName="OrderTakerConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Orders" Member="DataOrders">
+    <Type Name="DataOrder">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="OrderDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CustomerId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ShippingAddressId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Discount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ShippingFee" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="Tax" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="OrderTotal" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="ShippingDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="Order_OrderItem" Member="DataOrderItems" ThisKey="Id" OtherKey="OrderId" Type="DataOrderItem" />
+      <Association Name="Customer_Order" Member="DataCustomer" ThisKey="CustomerId" OtherKey="Id" Type="DataCustomer" IsForeignKey="true" />
+      <Association Name="Address_Order" Member="DataAddress" ThisKey="ShippingAddressId" OtherKey="Id" Type="DataAddress" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.OrderItems" Member="DataOrderItems">
+    <Type Name="DataOrderItem">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="OrderId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProductId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Quantity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TotalPrice" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Association Name="Order_OrderItem" Member="DataOrder" ThisKey="OrderId" OtherKey="Id" Type="DataOrder" IsForeignKey="true" />
+      <Association Name="Product_OrderItem" Member="DataProduct" ThisKey="ProductId" OtherKey="Id" Type="DataProduct" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Customers" Member="DataCustomers">
+    <Type Name="DataCustomer">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="LastName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Rating" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LoginName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Customer_Order" Member="DataOrders" ThisKey="Id" OtherKey="CustomerId" Type="DataOrder" />
+      <Association Name="Customer_Address" Member="DataAddresses" ThisKey="Id" OtherKey="CustomerId" Type="DataAddress" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Addresses" Member="DataAddresses">
+    <Type Name="DataAddress">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CustomerId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="StreetAddress1" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
+      <Column Name="StreetAddress2" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
+      <Column Name="City" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
+      <Column Name="State" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
+      <Column Name="PostCode" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="Country" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
+      <Association Name="Address_Order" Member="DataOrders" ThisKey="Id" OtherKey="ShippingAddressId" Type="DataOrder" />
+      <Association Name="Customer_Address" Member="DataCustomer" ThisKey="CustomerId" OtherKey="Id" Type="DataCustomer" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Products" Member="DataProducts">
+    <Type Name="DataProduct">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProductName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="UnitPrice" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="Active" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Image" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="Product_OrderItem" Member="DataOrderItems" ThisKey="Id" OtherKey="ProductId" Type="DataOrderItem" />
+    </Type>
+  </Table>
+</Database>

@@ -1,0 +1,14 @@
+﻿@model IEnumerable<OrderTaker.Models.Order>
+@{
+    ViewBag.Title = "Customer Orders";
+}
+
+<h2>Customer Orders</h2>
+
+<h3>Customer Name: @ViewBag.Customer.FirstName @ViewBag.Customer.LastName</h3>
+
+@foreach(var order in Model)
+{
+    Html.RenderPartial("OrderSummary", order);
+}
+

@@ -1,0 +1,35 @@
+﻿@model OrderTaker.Models.Product
+@{
+    ViewBag.Title = "Product Details";
+}
+
+<h2>Product Details</h2>
+<div class="item">
+    <h3>@Model.ProductName</h3>
+    @Model.Description
+    <h4>@Model.UnitPrice.ToString("c", new System.Globalization.CultureInfo("en-US"))</h4>
+
+    @if (Model.IsActive)
+    {
+        using (Html.BeginForm("AddToCart", "Cart"))
+        {
+            @Html.HiddenFor(x => x.Id)
+            @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+            <input type="submit" value="+ Add to cart" />
+        }
+    }
+    else
+    {
+        <div class="warning">
+            This item has been discontinued.
+        </div>
+    }
+
+    <div class="return">
+        @Html.ActionLink("<< Back to Product List", "Index")
+    </div>
+</div>
+
+
+
+

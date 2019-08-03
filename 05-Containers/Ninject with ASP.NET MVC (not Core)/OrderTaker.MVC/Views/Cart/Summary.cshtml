@@ -1,0 +1,9 @@
+﻿@model OrderTaker.Models.ShoppingCart
+
+<div id="cart">
+    <b>Your cart: </b>
+    @Model.CartItems.Sum(x => x.Quantity) item(s)
+    @Model.GetTotal().ToString("c", new System.Globalization.CultureInfo("en-US"))
+
+    @Html.ActionLink("Checkout", "Checkout", new { returnUrl = Request.RawUrl })
+</div>

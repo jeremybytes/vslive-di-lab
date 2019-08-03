@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "X10Test", "X10Test\X10Test.csproj", "{00065EB2-D5D8-4104-80D1-1480175CA17C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HouseControl.Library", "HouseControl.Library\HouseControl.Library.csproj", "{B9044E4D-22FE-4CD2-AD87-2FBFD6F2CE7E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HouseControlAgent", "HouseControlAgent\HouseControlAgent.csproj", "{53657A79-11CC-49C5-83F3-A507E1040D0F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HouseControl.Library.Test", "HouseControl.Library.Test\HouseControl.Library.Test.csproj", "{9632BCDB-55A1-4762-A6DF-66FBC38F06D1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HouseControl.Sunset", "HouseControl.Sunset\HouseControl.Sunset.csproj", "{74FA0173-6D5F-4086-BD9B-BE67BE1D5788}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HouseControl.Sunset.Test", "HouseControl.Sunset.Test\HouseControl.Sunset.Test.csproj", "{60CE9913-8840-4C28-B0E4-B8BBC08ABF69}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{00065EB2-D5D8-4104-80D1-1480175CA17C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00065EB2-D5D8-4104-80D1-1480175CA17C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00065EB2-D5D8-4104-80D1-1480175CA17C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00065EB2-D5D8-4104-80D1-1480175CA17C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9044E4D-22FE-4CD2-AD87-2FBFD6F2CE7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9044E4D-22FE-4CD2-AD87-2FBFD6F2CE7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9044E4D-22FE-4CD2-AD87-2FBFD6F2CE7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9044E4D-22FE-4CD2-AD87-2FBFD6F2CE7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53657A79-11CC-49C5-83F3-A507E1040D0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53657A79-11CC-49C5-83F3-A507E1040D0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53657A79-11CC-49C5-83F3-A507E1040D0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53657A79-11CC-49C5-83F3-A507E1040D0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9632BCDB-55A1-4762-A6DF-66FBC38F06D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9632BCDB-55A1-4762-A6DF-66FBC38F06D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9632BCDB-55A1-4762-A6DF-66FBC38F06D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9632BCDB-55A1-4762-A6DF-66FBC38F06D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74FA0173-6D5F-4086-BD9B-BE67BE1D5788}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74FA0173-6D5F-4086-BD9B-BE67BE1D5788}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74FA0173-6D5F-4086-BD9B-BE67BE1D5788}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74FA0173-6D5F-4086-BD9B-BE67BE1D5788}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60CE9913-8840-4C28-B0E4-B8BBC08ABF69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60CE9913-8840-4C28-B0E4-B8BBC08ABF69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60CE9913-8840-4C28-B0E4-B8BBC08ABF69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60CE9913-8840-4C28-B0E4-B8BBC08ABF69}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

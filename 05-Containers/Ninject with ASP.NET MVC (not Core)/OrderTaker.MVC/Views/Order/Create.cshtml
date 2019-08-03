@@ -1,0 +1,45 @@
+﻿@model OrderTaker.MVC.Models.CreateOrderViewModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Check Out</h2>
+
+<h3>Customer Information</h3>
+<h4>@Model.Order.Customer.FirstName @Model.Order.Customer.LastName</h4>
+<h4>Customer Rating: @Model.Order.Customer.Rating</h4>
+<h4>Customer Since: @Model.Order.Customer.StartDate.ToString("d")</h4>
+
+<h3>Products</h3>
+@foreach (var item in Model.Order.OrderItems)
+{
+    <h4>@item.Product.ProductName</h4>
+    <h4>Price: @item.Product.UnitPrice.ToString("C", new System.Globalization.CultureInfo("en-US"))</h4>
+    <h4>Quantity: @item.Quantity</h4>
+    <h4>Total: @item.TotalPrice.ToString("C", new System.Globalization.CultureInfo("en-US"))</h4>
+    <hr />
+}
+<hr />
+<h3>Order Total: @Model.Order.OrderTotal.ToString("C", new System.Globalization.CultureInfo("en-US"))</h3>
+
+<h3>ADD SHIPPING ADDRESS STUFF HERE</h3>
+
+@Model.AvailableAddresses[0].StreetAddress1<br />
+@if (!string.IsNullOrEmpty(@Model.AvailableAddresses[0].StreetAddress2))
+{
+    @Model.AvailableAddresses[0].StreetAddress2<br />
+}
+@Model.AvailableAddresses[0].City, @Model.AvailableAddresses[0].State @Model.AvailableAddresses[0].PostCode<br />
+@Model.AvailableAddresses[0].Country<br />
+<br />
+
+@foreach (var address in Model.AvailableAddresses)
+{
+    using (Html.BeginForm())
+    {
+        @Html.Hidden("shippingAddressId", address.Id)
+        @address.StreetAddress1<br />
+        <input type="submit" value="Ship to this address" />
+    }
+}

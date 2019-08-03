@@ -1,0 +1,35 @@
+﻿@model OrderTaker.Models.Order
+
+@{
+    ViewBag.Title = "Detail";
+}
+
+<h2>Order Detail</h2>
+
+<h3>Customer Name: @Model.Customer.FirstName @Model.Customer.LastName</h3>
+
+Shipping Address:<br />
+@Model.ShippingAddress.StreetAddress1<br />
+@if (!string.IsNullOrEmpty(@Model.ShippingAddress.StreetAddress2))
+{
+    @Model.ShippingAddress.StreetAddress2<br />
+}
+@Model.ShippingAddress.City, @Model.ShippingAddress.State @Model.ShippingAddress.PostCode<br />
+@Model.ShippingAddress.Country<br />
+<br />
+Order Date: @Model.OrderDate.ToString("d")
+@foreach (var orderItem in Model.OrderItems)
+{
+    <h4>@orderItem.Product.ProductName</h4>
+    <b>Unit Price: </b>
+    @orderItem.Product.UnitPrice.ToString("c", new System.Globalization.CultureInfo("en-US"))<br />
+    <b>Quantity :</b>
+    @orderItem.Quantity.ToString()<br />
+    <b>Total: </b>
+    @orderItem.TotalPrice.ToString("c", new System.Globalization.CultureInfo("en-US"))<br />
+    <hr />
+}
+<h4>Discount: @Model.Discount.ToString()%</h4>
+<h4>Total for Order placed on @Model.OrderDate.ToString("d"): </h4>
+<h3>@Model.OrderTotal.ToString("c", new System.Globalization.CultureInfo("en-US"))</h3>
+
