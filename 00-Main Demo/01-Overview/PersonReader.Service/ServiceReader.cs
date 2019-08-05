@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace PersonReader.Service
 {
-    public class ServiceReader : IPersonReader
+    public class ServiceReader : IPersonReader, IPersonRepository
     {
         HttpClient client = new HttpClient();
 

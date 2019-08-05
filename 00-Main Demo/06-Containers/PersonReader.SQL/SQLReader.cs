@@ -15,6 +15,7 @@ namespace PersonReader.SQL
             var optionsBuilder = new DbContextOptionsBuilder<PersonContext>();
             optionsBuilder.UseSqlite("Data Source=people.db");
             options = optionsBuilder.Options;
+            
         }
 
         public Task<List<Person>> GetPeopleAsync()

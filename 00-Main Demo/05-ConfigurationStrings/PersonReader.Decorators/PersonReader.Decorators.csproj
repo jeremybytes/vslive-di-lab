@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PeopleViewer.Common\PeopleViewer.Common.csproj" />
+    <ProjectReference Include="..\PeopleViewer.Logging\PeopleViewer.Logging.csproj" />
   </ItemGroup>
 
 </Project>

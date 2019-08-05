@@ -102,6 +102,10 @@
       <Project>{cccc604d-6cea-408c-8e6a-a55bc13aef4c}</Project>
       <Name>PeopleViewer.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PeopleViewer.Logging\PeopleViewer.Logging.csproj">
+      <Project>{06196569-CBD2-4FF3-99F2-7D6F18359399}</Project>
+      <Name>PeopleViewer.Logging</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PeopleViewer.Presentation\PeopleViewer.Presentation.csproj">
       <Project>{12581640-1ecc-44d0-9a6b-66b28fffe65f}</Project>
       <Name>PeopleViewer.Presentation</Name>

@@ -10,7 +10,7 @@ namespace PersonReader.CSV
     {
         // START Code Block #1: "Simple" Property Injection
         // Dependency is instantiated by the constructor every time
-        // (if the property is overriden before any method calls,
+        // (if the property is overridden before any method calls,
         //  the default is still instantiated even though it is never used).
         //public ICSVFileLoader FileLoader { get; set; }
 
@@ -23,16 +23,17 @@ namespace PersonReader.CSV
 
         // START Code Block #2: "Safe" Property Injection
         // Dependency is not instantiated until it is asked for
-        // (if the property is overriden before any method calls,
-        //  then the default is never instantiated).
+        // (if the property is overridden before any method calls,
+        //  the default is never instantiated).
         private ICSVFileLoader fileLoader;
-        public ICSVFileLoader FileLoader {
+        public ICSVFileLoader FileLoader
+        {
             get
             {
                 if (fileLoader == null)
                 {
                     string filePath = AppDomain.CurrentDomain.BaseDirectory + "People.txt";
-                    FileLoader = new CSVFileLoader(filePath);
+                    fileLoader = new CSVFileLoader(filePath);
                 }
                 return fileLoader;
             }

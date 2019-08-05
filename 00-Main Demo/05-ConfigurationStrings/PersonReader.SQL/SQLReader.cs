@@ -6,6 +6,15 @@ using System.Threading.Tasks;
 
 namespace PersonReader.SQL
 {
+    public class SQLReaderDBFileName
+    {
+        public string DBFileName { get; }
+        public SQLReaderDBFileName(string fileName)
+        {
+            DBFileName = fileName;
+        }
+    }
+
     public class SQLReader : IPersonReader
     {
         DbContextOptions<PersonContext> options;
@@ -15,6 +24,7 @@ namespace PersonReader.SQL
             var optionsBuilder = new DbContextOptionsBuilder<PersonContext>();
             optionsBuilder.UseSqlite($"Data Source={fileName.DBFileName}");
             options = optionsBuilder.Options;
+            
         }
 
         public Task<List<Person>> GetPeopleAsync()

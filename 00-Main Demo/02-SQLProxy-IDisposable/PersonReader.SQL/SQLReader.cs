@@ -8,14 +8,13 @@ namespace PersonReader.SQL
 {
     internal class SQLReader : IPersonReader, IDisposable
     {
-        DbContextOptions<PersonContext> options;
         PersonContext context;
 
         public SQLReader()
         {
             var optionsBuilder = new DbContextOptionsBuilder<PersonContext>();
             optionsBuilder.UseSqlite("Data Source=people.db");
-            options = optionsBuilder.Options;
+            DbContextOptions<PersonContext> options = optionsBuilder.Options;
             context = new PersonContext(options);
         }
 

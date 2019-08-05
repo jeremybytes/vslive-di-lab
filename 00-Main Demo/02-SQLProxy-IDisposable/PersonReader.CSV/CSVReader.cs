@@ -8,13 +8,40 @@ namespace PersonReader.CSV
 {
     public class CSVReader : IPersonReader
     {
-        public ICSVFileLoader FileLoader { get; set; }
+        // START Code Block #1: "Simple" Property Injection
+        // Dependency is instantiated by the constructor every time
+        // (if the property is overridden before any method calls,
+        //  the default is still instantiated even though it is never used).
+        //public ICSVFileLoader FileLoader { get; set; }
 
-        public CSVReader()
+        //public CSVReader()
+        //{
+        //    string filePath = AppDomain.CurrentDomain.BaseDirectory + "People.txt";
+        //    FileLoader = new CSVFileLoader(filePath);
+        //}
+        // END Code Block #1
+
+        // START Code Block #2: "Safe" Property Injection
+        // Dependency is not instantiated until it is asked for
+        // (if the property is overridden before any method calls,
+        //  the default is never instantiated).
+        private ICSVFileLoader fileLoader;
+        public ICSVFileLoader FileLoader
         {
-            string filePath = AppDomain.CurrentDomain.BaseDirectory + "People.txt";
-            FileLoader = new CSVFileLoader(filePath);
+            get
+            {
+                if (fileLoader == null)
+                {
+                    string filePath = AppDomain.CurrentDomain.BaseDirectory + "People.txt";
+                    fileLoader = new CSVFileLoader(filePath);
+                }
+                return fileLoader;
+            }
+            set { fileLoader = value; }
         }
+
+        // Note: No constructor since setup is done in the property getter.
+        // END Code Block #2
 
         public Task<List<Person>> GetPeopleAsync()
         {

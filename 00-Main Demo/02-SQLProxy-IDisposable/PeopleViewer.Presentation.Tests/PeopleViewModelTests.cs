@@ -7,16 +7,16 @@ namespace PeopleViewer.Presentation.Tests
 {
     public class PeopleViewModelTests
     {
-        private IPersonReader GetTestRepository()
+        private IPersonReader GetTestReader()
         {
-            return new FakeRepository();
+            return new FakeReader();
         }
 
         [Test]
         public async Task RefreshPeople_OnExecute_PeopleIsPopulated()
         {
             // Arrange
-            var repository = GetTestRepository();
+            var repository = GetTestReader();
             var vm = new PeopleViewModel(repository);
 
             // Act
@@ -31,7 +31,7 @@ namespace PeopleViewer.Presentation.Tests
         public async Task ClearPeople_OnExecute_PeopleIsEmpty()
         {
             // Arrange
-            var repository = GetTestRepository();
+            var repository = GetTestReader();
             var vm = new PeopleViewModel(repository);
             await vm.RefreshPeople();
             Assert.AreEqual(2, vm.People.Count(), "Invalid Arrangement");

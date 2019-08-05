@@ -9,13 +9,22 @@ using System.Threading.Tasks;
 
 namespace PersonReader.Service
 {
-    public class ServiceReader : IPersonReader
+    public class ServiceReaderUri
+    {
+        public string ServiceUriString { get; }
+        public ServiceReaderUri(string uri)
+        {
+            ServiceUriString = uri;
+        }
+    }
+
+    public class ServiceReader : IPersonReader, IPersonRepository
     {
         HttpClient client = new HttpClient();
 
-        public ServiceReader(ServiceReaderUri uri)
+        public ServiceReader(ServiceReaderUri readerUri)
         {
-            client.BaseAddress = new Uri(uri.ServiceUriString);
+            client.BaseAddress = new Uri(readerUri.ServiceUriString);
             client.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));
         }

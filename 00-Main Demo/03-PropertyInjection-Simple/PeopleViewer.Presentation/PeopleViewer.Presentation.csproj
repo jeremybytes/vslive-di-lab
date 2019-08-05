@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PeopleViewer.Common\PeopleViewer.Common.csproj" />
+    <ProjectReference Include="..\PersonReader.Service\PersonReader.Service.csproj" />
   </ItemGroup>
 
 </Project>

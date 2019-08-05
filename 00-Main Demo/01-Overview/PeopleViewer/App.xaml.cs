@@ -18,7 +18,7 @@ namespace PeopleViewer
 
         private static void ComposeObjects()
         {
-            var wrappedReader = new SQLReader();
+            var wrappedReader = new ServiceReader();
             var reader = new CachingReader(wrappedReader);
             var viewModel = new PeopleViewModel(reader);
             Application.Current.MainWindow = new MainWindow(viewModel);

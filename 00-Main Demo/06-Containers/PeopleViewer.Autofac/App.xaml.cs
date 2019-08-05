@@ -1,12 +1,12 @@
-﻿using Autofac;
-using Autofac.Features.ResolveAnything;
-using PeopleViewer.Common;
+﻿using PeopleViewer.Common;
 using PeopleViewer.Presentation;
 using PersonReader.SQL;
 using PersonReader.CSV;
 using PersonReader.Service;
 using System.Windows;
 using PersonReader.Decorators;
+using Autofac;
+using Autofac.Features.ResolveAnything;
 
 namespace PeopleViewer
 {

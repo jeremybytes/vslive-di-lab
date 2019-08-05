@@ -1,11 +1,11 @@
-﻿using Ninject;
-using PeopleViewer.Common;
+﻿using PeopleViewer.Common;
 using PeopleViewer.Presentation;
 using PersonReader.SQL;
 using PersonReader.CSV;
 using PersonReader.Service;
 using System.Windows;
 using PersonReader.Decorators;
+using Ninject;
 
 namespace PeopleViewer
 {
@@ -26,7 +26,8 @@ namespace PeopleViewer
         {
             Container.Bind<IPersonReader>().To<CachingReader>()
                 .InSingletonScope()
-                .WithConstructorArgument<IPersonReader>(Container.Get<ServiceReader>());
+                .WithConstructorArgument<IPersonReader>(
+                    Container.Get<ServiceReader>());
         }
 
         private void ComposeObjects()

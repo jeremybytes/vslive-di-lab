@@ -3,9 +3,9 @@ using PersonReader.SQL;
 using PersonReader.CSV;
 using PersonReader.Service;
 using System.Windows;
+using System;
 using PersonReader.Decorators;
 using PeopleViewer.Logging;
-using System;
 
 namespace PeopleViewer
 {
@@ -23,7 +23,8 @@ namespace PeopleViewer
             var reader = new ServiceReader();
             var delay = new TimeSpan(0, 0, 3);
             var retryReader = new RetryReader(reader, delay);
-            var logFilePath = AppDomain.CurrentDomain.BaseDirectory + "ExceptionLog.txt";
+            var logFilePath = AppDomain.CurrentDomain.BaseDirectory +
+                "ExceptionLog.txt";
             var logger = new FileLogger(logFilePath);
             var loggingReader = new ExceptionLoggingReader(retryReader, logger);
             var cachingReader = new CachingReader(loggingReader);
@@ -42,7 +43,7 @@ namespace PeopleViewer
                                     new ServiceReader(),
                                     new TimeSpan(0, 0, 3)),
                                 new FileLogger(
-                                    AppDomain.CurrentDomain.BaseDirectory + "log.txt")))));
+                                    AppDomain.CurrentDomain.BaseDirectory + "ExceptionLog.txt")))));
         }
     }
 }

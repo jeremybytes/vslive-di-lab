@@ -5,7 +5,7 @@ namespace PeopleViewer
 {
     public partial class MainWindow : Window
     {
-        PeopleViewModel ViewModel { get; set; }
+        PeopleViewModel ViewModel { get; }
 
         public MainWindow(PeopleViewModel viewModel)
         {

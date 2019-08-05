@@ -1,4 +1,6 @@
 ﻿using PeopleViewer.Common;
+using PersonReader.Service;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading.Tasks;
@@ -7,7 +9,7 @@ namespace PeopleViewer.Presentation
 {
     public class PeopleViewModel : INotifyPropertyChanged
     {
-        protected IPersonReader Repository;
+        protected readonly IPersonReader Reader;
 
         private IEnumerable<Person> _people;
         public IEnumerable<Person> People
@@ -22,14 +24,16 @@ namespace PeopleViewer.Presentation
             }
         }
 
-        public PeopleViewModel(IPersonReader repository)
+        public PeopleViewModel(IPersonReader reader)
         {
-            Repository = repository;
+            if (reader == null)
+                throw new ArgumentNullException("'reader' parameter cannot be null");
+            Reader = reader;
         }
 
         public async Task RefreshPeople()
         {
-            People = await Repository.GetPeopleAsync();
+            People = await Reader.GetPeopleAsync();
         }
 
         public void ClearPeople()
