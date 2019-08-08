@@ -3,7 +3,7 @@ Lab 02 - TDDing into New Functionality with DI
 
 Objectives
 -----------
-Dependency injection can make unit testing easier by isolating functionality. In this lab, you will use Test-Driven Development (TDD) to implement functionality. Along the way, property injection will help with make both the tests and the code easy to read and write.
+Dependency injection can make unit testing easier by isolating functionality. In this lab, you will use Test-Driven Development (TDD) to implement functionality. Along the way, property injection will help make both the tests and the code easy to read and write.
 
 Application Overview
 ---------------------
@@ -20,7 +20,7 @@ The "Sunset.Interface" project contains an interface that we want to implement:
     }
 ```
 
-Data for this method can be obtained from a .NET Core WebAPI service in the "SolarCalculator.Service" project. The service can be started from Visual Studio by selecting "Debug | Start Without Debugging" from the menu (Ctrl+F5). *Note: If you are prompted to trust an SSL certificate, just answer "No". The service is configured to run without SSL.*
+Data for this method can be obtained from a .NET Core API service in the "SolarCalculator.Service" project. The service can be started from Visual Studio by selecting "Debug | Start Without Debugging" from the menu (Ctrl+F5). *Note: If you are prompted to trust an SSL certificate, just answer "No". The service is configured to run without SSL.*
 
 Alternately, the service can be started from the command line by navigating to the "SolarCalculator.Service" folder and typing "dotnet run".
 
@@ -77,7 +77,7 @@ This class is a stub that will be used to implement the desired behavior.
 This class wraps the call to the service. This will be used by the "SunsetCalculator" class.
 
 * Sunset.Library.Tests project  
-This project contains the tests that will be used to build the code. The tests are commented out so that they can be added one test/step at a time. This project uses NUnit for unit testing. In addition, the NUnit test adapter has also be installed. The unit tests will show in the "Test Explorer" window in Visual Studio. If this window is not already showing, it is accessible from "Test | Windows | Test Explorer" on the menu.
+This project contains the tests that will be used to build the code. The tests are commented out so that they can be added one test/step at a time. This project uses NUnit for unit testing, and both NUnit and the NUnit test adapter have already been installed. With the test adapater, the unit tests will show in the "Test Explorer" window in Visual Studio. If this window is not already showing, it is accessible from "Test | Windows | Test Explorer" on the menu.
 
 * Sunset.Library.Tests project / SunsetCalculatorTests class  
 This is the test class. It contains a "goodResults" string that can be used for tests as well as an initial failing test.
@@ -101,7 +101,7 @@ Hints
     dynamic data = JsonConvert.DeserializeObject(serviceData);
 ```
 
-* A variety of techniques can be used for isolation and testing. This about appropriate interfaces and dependency injection patterns that can help keep code loosely coupled to make testing easier.
+* Either Constructor Injection or Property Injection can be used for isolation and testing. Think about the differences in the patterns to select the one you think is more appropriate.
 
 Step-by-step instructions are included below. The step-by-step instructions start with the implementation of "GetSunset" (and its constituent parts). If you need more assistance, keep reading. 
 Otherwise, **STOP READING NOW**
@@ -137,7 +137,7 @@ Test #1: Implementing the ISunsetCalculator Interface
 Test #2: Convert Time String to DateTime value
 -----------------------------------------------
 
-1. The next test is for  a new method to parse a local time string (such as "8:25:51 PM") into a DateTime (such as 2019-08-13T20:25:51"). We can create this as a static method on the SunsetCalculator class.
+1. The next test is for  a new method to parse a local time string (such as "8:25:51 PM") into a DateTime (such as "2019-08-13T20:25:51"). We can create this as a static method on the SunsetCalculator class.
 
 ```c#
     [Test]
@@ -328,7 +328,10 @@ The error message is an HTTP exception that the service is not available. If the
 
 3. Start the service by opening a command prompt/PowerShell window. Navigate to the "SolarCalculator.Service" folder. Then type "dotnet run". This should start the service. You'll know the service is running if the output says "Now listening on: http://localhost:8973".
 
-You can test the service by using the sample urls in a browser window.
+You can test the service by using the sample url in a browser window.
+
+http://localhost:8973/api/SolarCalculator/47.6429/-122.1277/2019-08-13
+
 
 4. With the service running, re-run the tests. The test will still fail, but with a different result.
 
@@ -344,7 +347,7 @@ The location in the service caller class is my hometown - Sedro-Woolley, WA.
 
 The difference in location accounts for the different sunset times.
 
-5. This is the hard part. We leave move on to Part 3 with our test failing. But because it is a known failure mode (a discrepancy in the times), we can make sure that the test continues to fail in this same way until we get the seam added to our code.
+5. This is the hard part. We move on to Part 3 with our test failing. But because it is a known failure mode (a discrepancy in the times), we can make sure that the test continues to fail in this same way until we get the seam added to our code.
 
 Test #4 - Part 3: Calling "GetSunset" Adding a Seam to the Code with DI
 ------------------------------------------------------------------------

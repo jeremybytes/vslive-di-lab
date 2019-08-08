@@ -42,7 +42,7 @@ Hints
 
 * The Test project has a "TestData" class with hard-coded records that can be used for testing.
 
-If you need more assistance, step-by-step instructions are included below. Otherwise, **STOP READING NOW**
+If you need more assistance, step-by-step instructions are included below (after the Advanced Tests section).
 
 
 Advanced Tests
@@ -194,7 +194,7 @@ Moq has a number of good features that can help us with testing. We'll specifica
 
 1. Add Moq to the test project
 
-In the "DataProcessor.Library.Tests" project, right-click on the Dependencies and select "Manage NuGet Packages". Then browse for "Moq" and install it.
+In the "DataProcessor.Library.Tests" project, right-click on the Dependencies and select "Manage NuGet Packages". Then use the search box to locate "Moq" and install it.
 
 2. Create a new file for the logger tests: "DataParserLoggerTests.cs"
 
@@ -220,7 +220,9 @@ In the "DataProcessor.Library.Tests" project, right-click on the Dependencies an
     var parser = new DataParser(mockLogger.Object);
 ```
 
-The first line creates a new mock variable based on our ILogger interface. We don't need to do any more set up for this test, but mocking allows us to specify behavior that we want during testing. This is a very useful feature.
+The first line creates a new mock variable based on our ILogger interface. 
+
+Moq allows us to add custom behavior to the mock object without creating a separate "fake" class. For this test, the default mock object behavior is fine, so no further setup is required.
 
 To get an actual "ILogger" from our mock, we use the "Object" property. We can pass this to our DataParser constructor.
 
@@ -243,7 +245,7 @@ To get an actual "ILogger" from our mock, we use the "Object" property. We can p
 
 This is where things get interesting. We call the "Verify" method on our mock object -- notice that we are using "mockLogger". This takes a delegate where we specify which method we're calling. In this case, we are specifying that we are checking whether the "Log" method is called.
 
-We can also check to see if the "Log" method was called with specific parameters. In this case, we want to check for any message (the first parameter). Moq offers the "It.IsAny<T>()" methods that we can use with this. The second parameter is the "BadRecord" that is used (it is single-record collection, so we pull out the first one). In this "Verify" call, we are asking whether the "Log" method is called with any string for the first parameter and the contents of "BadRecord". We could also use "It.IsAny<string>()" for the second parameter to capture all calls to "Log".
+We can also check to see if the "Log" method was called with specific parameters. In this case, we want to check for any message (the first parameter). Moq offers the "It.IsAny<T>()" method that we can use with this. The second parameter is the "BadRecord" that is used (it is a single-record collection, so we select the first one). In this "Verify" call, we are asking whether the "Log" method is called with any string for the first parameter and the contents of "BadRecord". We could also use "It.IsAny<string>()" for the second parameter to capture all calls to "Log".
 
 The "Verify" method has a second parameter to indicate how many times the method is called. In this case, we are using the Moq method "Times.Once()". This means that "Verify" will return true if "Log" is called one time (and only one time).
 
