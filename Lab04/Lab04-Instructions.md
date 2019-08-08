@@ -548,7 +548,7 @@ The factory method "new"s up the Schedule and passes in the path and the sunset 
 
 Here we ask the container for an instance of the "HouseController" class. Then we use property injection to replace the default "Commander" with the FakeCommander.
 
-8b. Alternately, we can configure the container to tell is that we want to use property injection for the "HouseController".
+8b. Alternately, we can configure the container to use property injection for the "HouseController".
 
 ```c#
     container.Bind<HouseController>().ToSelf()
