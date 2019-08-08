@@ -183,7 +183,7 @@ The first goal is to change from the service-based data provider to the local ca
 
 * The result can be tested by running the test application *without* starting the service first.
 
-Step-by-step instructions are included below (after all of the Goal Hints). If you need more assistance, keep reading. Otherwise, **STOP READING NOW**
+Step-by-step instructions are included below (after all of the Goal Hints).
 
 Goal #2 Hints
 --------------
@@ -203,7 +203,7 @@ The second goal is to add caching functionality to the data provider. This will 
 
 * To use the cache, update the composition root of the application.
 
-Step-by-step instructions are included below (after all of the Goal Hints). If you need more assistance, keep reading. Otherwise, **STOP READING NOW**
+Step-by-step instructions are included below (after all of the Goal Hints).
 
 Goal #3 Hints
 --------------
@@ -227,7 +227,7 @@ The third goal is to add the Ninject dependency injection container to the test 
         .WithPropertyValue("Commander", new FakeCommander());
 ```
 
-Step-by-step instructions are included below (after all of the Goal Hints). If you need more assistance, keep reading. Otherwise, **STOP READING NOW**
+Step-by-step instructions are included below (after all of the Goal Hints).
 
 Goal #4 Hints
 --------------
@@ -245,7 +245,7 @@ The fourth goal is to add the location information to the sunset provider. Curre
         .WithConstructorArgument("paramName", 123);
 ```
 
-Step-by-step instructions are included below (after all of the Goal Hints). If you need more assistance, keep reading. Otherwise, **STOP READING NOW**
+Step-by-step instructions are included below (after all of the Goal Hints).
 
 Goal #5 Hints
 --------------
@@ -257,7 +257,9 @@ The last goal is to change the injected constructor parameters from primitive ty
 
 * When complete, there should be no factory methods used with Ninject.
 
-Step-by-step instructions are included below. If you need more assistance, keep reading. Otherwise, **STOP READING NOW**
+Step-by-step instructions are included below. 
+
+If you need more assistance, keep reading. Otherwise, **STOP READING NOW**
 
 Goal #1 - Step-by-Step: Changing the Data Provider
 ---------------------------------------------------
